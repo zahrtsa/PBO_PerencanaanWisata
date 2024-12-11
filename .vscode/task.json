@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build with Maven",
+            "type": "shell",
+            "command": "mvn clean package",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run JavaFX App",
+            "type": "shell",
+            "command": "mvn javafx:run",
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

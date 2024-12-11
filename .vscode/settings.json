@@ -1,0 +1,26 @@
+{
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.home": "C:\\Program Files\\Java\\jdk-18.0.2",
+  "java.project.sourcePaths": ["src/main/java"],
+  "java.project.outputPath": "target/classes",
+  "java.debug.settings.console": "integratedTerminal",
+  "java.dependencies.autoRefresh": true,
+  "files.exclude": {
+    "target": true,
+    ".mvn": true
+  },
+  "javafx.sdk.path": "C:\\Program Files\\JavaFX\\javafx-sdk-23.0.1\\lib",
+  "netbeans.jdkhome": "c:\\Program Files\\Java\\jdk-23",
+  "netbeans.project.jdkhome": "c:\\Program Files\\Java\\jdk-23",
+  "java.jdt.ls.java.home": "c:\\Program Files\\Java\\jdk-23",
+  "terminal.integrated.env.windows": {
+    "JAVA_HOME": "c:\\Program Files\\Java\\jdk-23",
+    "PATH": "c:\\Program Files\\Java\\jdk-23\\bin;${env:PATH}"
+  },
+  "maven.terminal.customEnv": [
+    {
+      "environmentVariable": "JAVA_HOME",
+      "value": "c:\\Program Files\\Java\\jdk-23"
+    }
+  ]
+}
