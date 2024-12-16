@@ -1,3 +1,10 @@
 com\desty5\controllers\MainController.class
-com\desty5\models\DatabaseModel.class
+com\desty5\controllers\auth\AuthController.class
+com\desty5\models\DatabaseConnection.class
+com\desty5\models\DestinasiModel.class
 com\desty5\App.class
+com\desty5\models\DataDummy.class
+com\desty5\models\DatabaseModel.class
+com\desty5\models\CreateTable.class
+com\desty5\models\LoginModel.class
+com\desty5\controllers\DestinasiController.class

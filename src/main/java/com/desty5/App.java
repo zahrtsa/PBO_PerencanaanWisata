@@ -12,7 +12,7 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         try {
             // Pastikan jalur FXML sesuai dengan struktur proyek Anda
-            URL fxmlLocation = getClass().getResource("/fxml/Main.fxml");
+            URL fxmlLocation = getClass().getResource("/fxml/auth/login.fxml");
             if (fxmlLocation == null) {
                 throw new RuntimeException("FXML file not found at /fxml/Main.fxml");
             }
