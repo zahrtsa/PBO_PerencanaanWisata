@@ -1,0 +1,29 @@
+.root {
+    -fx-background-color: #f9f9f9;
+}
+
+.label {
+    -fx-text-fill: #333;
+    -fx-font-family: "Arial";
+}
+
+.text-field, .password-field {
+    -fx-background-color: #fff;
+    -fx-border-color: #8fc0e4; /* Biru pastel */
+    -fx-border-radius: 15px; /* Membuat border lebih lonjong */
+    -fx-padding: 5px;
+    -fx-font-family: "Arial";
+}
+
+.button {
+    -fx-background-color: #8fc0e4; /* Biru pastel untuk tombol */
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+}
+
+h1 {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333; /* Menggunakan warna dari .label */
+}
