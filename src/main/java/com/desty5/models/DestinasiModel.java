@@ -1,8 +1,5 @@
 package com.desty5.models;
 
-import com.zaxxer.hikari.HikariDataSource;
-import org.mindrot.jbcrypt.BCrypt; // Import BCrypt library
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,7 +48,6 @@ public class DestinasiModel {
         return gambar;
     }
 
-    // Method to fetch destinasi data from the database
     public static List<DestinasiModel> fetchDestinasiData(Connection connection) {
         List<DestinasiModel> destinasiList = new ArrayList<>();
         String query = "SELECT id, gambar, nama, lokasi, deskripsi, harga_destinasi FROM destinasi";
@@ -71,9 +67,11 @@ public class DestinasiModel {
                 destinasiList.add(destinasi);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Use proper logging mechanism here
+            e.printStackTrace();
             System.err.println("Gagal untuk mengambil data destinasi: " + e.getMessage());
         }
         return destinasiList;
     }
+
+    
 }
