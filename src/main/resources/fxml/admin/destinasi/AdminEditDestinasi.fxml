@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="640.0" prefWidth="361.0" style="-fx-background-color: white; " xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desty5.controllers.admin.destinasi.AdminEditDestinasiController">
+    <TextField fx:id="namaField" layoutX="138.0" layoutY="194.0" prefHeight="26.0" prefWidth="181.0" promptText="Nama Destinasi" />
+    <TextField fx:id="lokasiField" layoutX="137.0" layoutY="234.0" prefHeight="26.0" prefWidth="182.0" promptText="Lokasi" />
+    <TextField fx:id="deskripsiField" layoutX="137.0" layoutY="274.0" prefHeight="26.0" prefWidth="182.0" promptText="Deskripsi" />
+    <TextField fx:id="hargaField" layoutX="137.0" layoutY="314.0" prefHeight="26.0" prefWidth="182.0" promptText="Harga" />
+
+    <ImageView fx:id="gambarImageView" fitHeight="110.0" fitWidth="152.0" layoutX="138.0" layoutY="396.0" />
+
+    <Button layoutX="138.0" layoutY="358.0" onAction="#uploadGambar" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Pilih Gambar" />
+
+    <Button layoutX="103.0" layoutY="516.0" onAction="#updateDestinasi" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Update Destinasi" />
+
+    <Button layoutX="217.0" layoutY="516.0" onAction="#deleteDestinasi" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Hapus Destinasi" />
+
+    <Button layoutX="38.0" layoutY="516.0" onAction="#mundur" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Mundur" />
+
+    <Text layoutX="30.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nama Destinasi :" wrappingWidth="106.40000000000003" />
+    <Text layoutX="30.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lokasi :" wrappingWidth="106.40000000000003" />
+    <Text layoutX="30.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deskripsi :" wrappingWidth="106.40000000000003" />
+    <Text layoutX="30.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harga (Rp) :" wrappingWidth="106.40000000000003" />
+    <Text layoutX="30.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilih Gambar :" wrappingWidth="106.40000000000003" />
+
+    <Text fill="PURPLE" layoutX="131.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Destinasi">
+        <font>
+            <Font name="System Bold" size="17.0" />
+        </font>
+    </Text>
+    
+
+    <ImageView fitHeight="110.0" fitWidth="117.0" layoutX="130.0" layoutY="22.0">
+        <image>
+            <Image url="@../../../img/logo/logo_tagline.png" />
+        </image>
+    </ImageView>
+</AnchorPane>
