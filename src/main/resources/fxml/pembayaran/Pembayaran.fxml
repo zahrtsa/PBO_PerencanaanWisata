@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desty5.controllers.pembayaran.PembayaranController">
+   <Pane layoutX="13.0" layoutY="11.0" prefHeight="615.0" prefWidth="333.0">
+      <children>
+          <VBox alignment="CENTER" spacing="20">
+              <Label fx:id="alertMessage" styleClass="pesan-notif" text="" />
+          </VBox>
+         <Pane layoutX="11.0" layoutY="456.0" prefHeight="81.0" prefWidth="312.0">
+            <children>
+                  <Button fx:id="btnBayar" alignment="CENTER" cacheShape="false" cancelButton="true" centerShape="false" contentDisplay="CENTER" defaultButton="true" depthTest="ENABLE" focusTraversable="false" graphicTextGap="0.0" layoutX="56.0" layoutY="21.0" mnemonicParsing="false" onAction="#handlePayment" prefHeight="40.0" prefWidth="200.0" scaleShape="false" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5px; -fx-padding: 10px; -fx-transition: all 0.2s ease-in-out; -fx-font-size: 14px;" text="Bayar Sekarang">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  </Button>
+            </children>
+         </Pane>
+         <Pane layoutX="11.0" layoutY="351.0" prefHeight="113.0" prefWidth="312.0">
+            <children>
+                 <TextField fx:id="inputPembayaran" alignment="CENTER" layoutX="24.0" layoutY="57.0" prefHeight="25.0" prefWidth="265.0" promptText="Contoh: 3500000" style="-fx-focus-color:rgb(236, 154, 29); -fx-border-radius: 5px;">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </TextField>
+         
+                 <Label layoutX="50.0" layoutY="14.0" styleClass="input" text="Masukkan Jumlah Pembayaran:">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+        <Pane layoutX="31.0" layoutY="151.0" prefHeight="174.0" prefWidth="272.0">
+            <children>
+                <GridPane hgap="10" prefHeight="162.0" prefWidth="265.0" style="-fx-border-color:rgba(116, 112, 112, 0.72); -fx-background-color: white; -fx-border-width: 1; -fx-border-radius: 5; -fx-padding: 10;" vgap="10">
+                <Label prefHeight="20.0" prefWidth="122.0" text="Nama Pemesan:" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                </Label>
+                <Label fx:id="lblNamaPemesan" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            
+                <Label prefHeight="20.0" prefWidth="62.0" text="Destinasi:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                </Label>
+                <Label fx:id="lblDestinasi" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                </Label>
+                <Label prefHeight="20.0" prefWidth="62.0" text="Transportasi:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                </Label>
+                <Label fx:id="lblTransportasi" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                </Label>
+                <Label prefHeight="20.0" prefWidth="62.0" text="Jumlah Orang:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                </Label>
+                <Label fx:id="lblJumlahOrang" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                </Label>
+                <Label prefHeight="20.0" prefWidth="62.0" text="Total Harga:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                </Label>
+                <Label fx:id="lblTotalHarga" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                </Label>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                </GridPane>
+            </children>
+         </Pane>
+         <Pane layoutX="71.0" layoutY="43.0" prefHeight="59.0" prefWidth="193.0" />
+         <Label layoutX="85.0" layoutY="81.0" styleClass="input" text="Pembayaran" textFill="PURPLE">
+            <font>
+               <Font name="System Bold" size="29.0" />
+            </font>
+         </Label>
+         <ImageView fitHeight="73.0" fitWidth="75.0" layoutX="134.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../img/logo/logo_full.png" />
+            </image>
+         </ImageView>
+      </children>
+   </Pane>
+</Pane>
