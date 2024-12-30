@@ -112,7 +112,9 @@ public class DestinasiController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/destinasi/DetailDestinasi.fxml"));
             Parent detailRoot = loader.load();
     
+            DetailDestinasiController detailController = loader.getController();
     
+            detailController.loadDetailData(destinasi.getId());
     
             destinasiContainer.getScene().setRoot(detailRoot);
         } catch (IOException e) {
