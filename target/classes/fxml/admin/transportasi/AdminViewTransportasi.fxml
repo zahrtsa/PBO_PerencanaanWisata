@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" prefHeight="640.0" prefWidth="360.0" spacing="10" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desty5.controllers.admin.transportasi.AdminTransportasiViewController">
+   <Pane prefHeight="645.0" prefWidth="360.0">
+      <children>
+          <Label fx:id="mundurhalaman" layoutX="14.0" layoutY="14.0" onMouseClicked="#mundur" style="-fx-text-fill: #800080; -fx-cursor: hand;" text="⏻ Kembali">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Label>
+          <Button layoutX="14.0" layoutY="119.0" onAction="#tambahTransportasi" prefHeight="30.0" prefWidth="174.0" style="-fx-font-size: 14; -fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Tambah Transportasi" />
+      
+          <HBox alignment="CENTER" layoutX="99.0" layoutY="333.0" spacing="10" />
+         <Pane layoutX="14.0" layoutY="160.0" prefHeight="374.0" prefWidth="333.0">
+            <children>
+               <ScrollPane prefHeight="374.0" prefWidth="400.0">
+                  <content>
+                     <VBox prefHeight="374.0" prefWidth="334.0">
+                        <children>
+                            <TableView fx:id="transportasiTable" prefHeight="372.0" prefWidth="334.0">
+                                <columns>
+                                    <TableColumn fx:id="namaColumn" prefWidth="111.20000839233398" text="Nama" />
+                                    <TableColumn fx:id="jenisColumn" prefWidth="88.0" text="Jenis" />
+                                    <TableColumn fx:id="kapasitasColumn" prefWidth="69.59999084472656" text="Kapasitas" />
+                                    <TableColumn fx:id="hargaColumn" prefWidth="83.99993896484375" text="Harga (Rp)" />
+                                </columns>
+                            </TableView>
+                        </children>
+                     </VBox>
+                  </content>
+               </ScrollPane>
+            </children>
+         </Pane>
+
+         <Button layoutX="115.0" layoutY="549.0" onAction="#editTransportasi" style="-fx-font-size: 14; -fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Edit Transportasi" />
+         
+         <Text fill="#880088" layoutX="97.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #800080;" text="Daftar Transportasi" textAlignment="CENTER" wrappingWidth="166.13671875">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Text>
+
+         <ImageView fitHeight="86.0" fitWidth="89.0" layoutX="137.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../img/logo/logo_tagline.png" />
+            </image>
+         </ImageView>
+      </children>
+   </Pane>
+</VBox>

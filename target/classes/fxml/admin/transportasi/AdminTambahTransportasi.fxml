@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desty5.controllers.admin.transportasi.AdminTransportasiTambahController">
+    
+    <VBox alignment="TOP_CENTER" layoutY="206.0" prefHeight="434.0" prefWidth="360.0" spacing="10" style="-fx-padding: 20;">
+
+        <GridPane hgap="10" vgap="10">
+            <Label text="Nama Transportasi:" />
+            <TextField fx:id="namaField" GridPane.columnIndex="1" />
+            <Label text="Jenis Transportasi:" GridPane.rowIndex="1" />
+            <TextField fx:id="jenisField" prefHeight="26.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Kapasitas:" GridPane.rowIndex="2" />
+            <TextField fx:id="kapasitasField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Harga (Rp):" GridPane.rowIndex="3" />
+            <TextField fx:id="hargaField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+      <Pane prefHeight="200.0" prefWidth="230.0">
+         <children>
+              <HBox alignment="CENTER" spacing="10" />
+               <Button layoutX="191.0" layoutY="7.0" onAction="#navigateToTransportasiController" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Cancel" />
+               <Button layoutX="112.0" layoutY="7.0" onAction="#submitTransportasi" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #800080; -fx-text-fill: white; -fx-font-weight: bold;" text="Submit" />
+         </children>
+      </Pane>
+    </VBox>
+
+    <Label layoutX="91.0" layoutY="154.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #800080;" text="Tambah Transportasi">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+    
+    <ImageView fitHeight="102.0" fitWidth="127.0" layoutX="125.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../img/logo/logo_tagline.png" />
+        </image>
+    </ImageView>
+</Pane>
