@@ -1,13 +1,14 @@
 package com.desty5.models;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-import org.mindrot.jbcrypt.BCrypt; // Import BCrypt library
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 public class DatabaseConnection {
     private final HikariDataSource dataSource;
@@ -20,26 +21,34 @@ public class DatabaseConnection {
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        config.setMaximumPoolSize(20);
+        config.setMinimumIdle(5);
+        config.setIdleTimeout(30000);
+        config.setMaxLifetime(1800000);
+        config.setLeakDetectionThreshold(2000);
+
 
         this.dataSource = new HikariDataSource(config);
-        System.out.println("Berhasil terhubung ke database dengan HikariCP!"); // Debug log
+        System.out.println("Berhasil terhubung ke database dengan HikariCP!");
 
         try (Connection connection = getConnection()) {
-            // Check if database exists
             if (!isDatabaseExist(connection, "desty5_db")) {
                 System.err.println("Database 'desty5_db' tidak ada.");
                 return;
             }
 
-            // Check if user table exists
             if (!isTableExist(connection, "user")) {
-                // Table does not exist, create user table and insert default users
                 createUserTableAndDefaultUser(connection);
             }
 
-            // Setup additional tables
             CreateTable.setupTables(connection);
-            DataDummy.tambahDummyData(connection);
+            if (!isAllDummyDataExists(connection)) {
+                DataDummy.tambahDummyData(connection);
+            } else {
+                System.out.println("Data dummy sudah ada di semua tabel, tidak perlu ditambahkan lagi.");
+            }
+            
+            
         }
     }
 
@@ -70,6 +79,59 @@ public class DatabaseConnection {
         }
     }
 
+    private boolean isAllDummyDataExists(Connection connection) throws SQLException {
+        return isDummyDataInDestinasiExists(connection) &&
+               isDummyDataInTransportasiExists(connection) &&
+               isDummyDataInPemesananExists(connection) &&
+               isDummyDataInPembayaranExists(connection);
+    }
+    
+    private boolean isDummyDataInDestinasiExists(Connection connection) throws SQLException {
+        String checkSQL = "SELECT COUNT(*) FROM destinasi WHERE nama = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(checkSQL)) {
+            stmt.setString(1, "Labuan Bajo");
+            try (var resultSet = stmt.executeQuery()) {
+                resultSet.next();
+                return resultSet.getInt(1) > 0;
+            }
+        }
+    }
+    
+    private boolean isDummyDataInTransportasiExists(Connection connection) throws SQLException {
+        String checkSQL = "SELECT COUNT(*) FROM transportasi WHERE nama = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(checkSQL)) {
+            stmt.setString(1, "Bus Pariwisata");
+            try (var resultSet = stmt.executeQuery()) {
+                resultSet.next();
+                return resultSet.getInt(1) > 0;
+            }
+        }
+    }
+    
+    private boolean isDummyDataInPemesananExists(Connection connection) throws SQLException {
+        String checkSQL = "SELECT COUNT(*) FROM pemesanan WHERE user_id = ? AND destinasi_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(checkSQL)) {
+            stmt.setInt(1, 2);
+            stmt.setInt(2, 4);
+            try (var resultSet = stmt.executeQuery()) {
+                resultSet.next();
+                return resultSet.getInt(1) > 0;
+            }
+        }
+    }
+    
+    private boolean isDummyDataInPembayaranExists(Connection connection) throws SQLException {
+        String checkSQL = "SELECT COUNT(*) FROM pembayaran WHERE pemesanan_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(checkSQL)) {
+            stmt.setInt(1, 1);
+            try (var resultSet = stmt.executeQuery()) {
+                resultSet.next();
+                return resultSet.getInt(1) > 0;
+            }
+        }
+    }
+    
+
     private void createUserTableAndDefaultUser(Connection connection) {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS user (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
@@ -86,13 +148,12 @@ public class DatabaseConnection {
         try (PreparedStatement stmtCreateTable = connection.prepareStatement(createTableSQL);
              PreparedStatement stmtInsertUser = connection.prepareStatement(insertUserSQL)) {
 
-            connection.setAutoCommit(false); // Start transaction
+            connection.setAutoCommit(false);
             stmtCreateTable.executeUpdate();
             System.out.println("Berhasil membuat tabel user.");
 
-            // Insert default admin user
-            String saltAdmin = BCrypt.gensalt(); // Generate salt for admin
-            String hashedPasswordAdmin = BCrypt.hashpw("@root!AW0mn", saltAdmin); // Hash the password with the salt
+            String saltAdmin = BCrypt.gensalt();
+            String hashedPasswordAdmin = BCrypt.hashpw("@root!AW0mn", saltAdmin);
             stmtInsertUser.setString(1, "Admin Default");
             stmtInsertUser.setString(2, "admin");
             stmtInsertUser.setString(3, "admin@example.com");
@@ -102,9 +163,8 @@ public class DatabaseConnection {
             stmtInsertUser.executeUpdate();
             System.out.println("Admin user berhasil dibuat!");
 
-            // Insert user 'desty5'
-            String saltDesty5 = BCrypt.gensalt(); // Generate salt for desty5
-            String hashedPasswordDesty5 = BCrypt.hashpw("SecurePass!123", saltDesty5); // Hash the password with the salt
+            String saltDesty5 = BCrypt.gensalt();
+            String hashedPasswordDesty5 = BCrypt.hashpw("SecurePass!123", saltDesty5);
             stmtInsertUser.setString(1, "desty5");
             stmtInsertUser.setString(2, "desty5");
             stmtInsertUser.setString(3, "desty5@example.com");
@@ -114,10 +174,10 @@ public class DatabaseConnection {
             stmtInsertUser.executeUpdate();
             System.out.println("User 'desty5' berhasil terbuat!");
 
-            connection.commit(); // Commit transaction
+            connection.commit();
         } catch (SQLException e) {
             try {
-                connection.rollback(); // Rollback transaction in case of error
+                connection.rollback();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -125,7 +185,7 @@ public class DatabaseConnection {
             System.err.println("Gagal untuk membuat tabel user dan menambahkan data : " + e.getMessage());
         } finally {
             try {
-                connection.setAutoCommit(true); // Reset auto-commit mode
+                connection.setAutoCommit(true);
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.err.println("Gagal untuk reset auto-commit mode: " + e.getMessage());
